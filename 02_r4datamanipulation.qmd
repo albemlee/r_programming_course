@@ -1,0 +1,241 @@
+---
+title: "Working with Data in R: Data Frames and the Tidyverse"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Overview
+
+In this chapter, we move from basic programming concepts to **working with real data** in R. You’ll learn how to manipulate data frames using the **tidyverse**, a collection of tools designed to make data analysis readable, expressive, and human-friendly.
+
+------------------------------------------------------------------------
+
+## Data Frames
+
+Most real-world datasets are stored as **data frames**.
+
+-   Each **row** represents an observation
+-   Each **column** represents a variable
+-   Columns can be **different data types**
+
+``` r
+student_df
+```
+
+::: callout-question
+**True or False:** All columns in a data frame must be the same type.
+:::
+
+::: callout-answer
+**False.** Data frames can contain multiple column types.
+:::
+
+------------------------------------------------------------------------
+
+## From Data Frames to Tibbles
+
+The tidyverse introduces **tibbles**, a modern version of data frames.
+
+Tibbles: - Print more cleanly - Are stricter about subsetting - Work seamlessly with tidyverse tools
+
+::: callout-note
+Some older R code expects traditional data frames and may not work with tibbles.
+:::
+
+------------------------------------------------------------------------
+
+## The Tidyverse
+
+The **tidyverse** is a collection of packages that help you “have a conversation with your data.”
+
+### Base R vs Tidyverse
+
+``` r
+# Base R
+student_df[student_df$final_grade >= 90, "full_name"]
+
+# Tidyverse
+student_df %>%
+  filter(final_grade >= 90) %>%
+  select(full_name)
+```
+
+::: callout-tip
+Tidyverse code often mirrors how you describe your analysis in plain English.
+:::
+
+### Practice
+
+::: callout-exercise
+Which of the following uses the tidyverse approach?
+
+``` r
+a) prescriptions_df %>% filter(RXDUSE == 1) %>% select(SEQN, RXDDRUG)
+b) prescriptions_df[prescriptions_df$RXDUSE == 1, c("SEQN", "RXDDRUG")]
+```
+:::
+
+::: callout-answer
+**a)** uses the tidyverse approach.
+:::
+
+------------------------------------------------------------------------
+
+## Subsetting with `filter()` and `select()`
+
+``` r
+student_df %>%
+  filter(Post.Assessment.Score > Pre.Assessment.Score) %>%
+  select(Name, Grade)
+```
+
+-   `filter()` selects **rows**
+-   `select()` selects **columns**
+
+::: callout-warning
+Do not use `filter()` to select columns — use `select()`.
+:::
+
+------------------------------------------------------------------------
+
+## Creating and Modifying Columns with `mutate()`
+
+Use `mutate()` to create new variables or modify existing ones.
+
+``` r
+student_df %>%
+  mutate(
+    Total_Attendance =
+      Week.1.Attendance +
+      Week.2.Attendance +
+      Week.3.Attendance +
+      Week.4.Attendance +
+      Week.5.Attendance
+  )
+```
+
+### Combining `mutate()` and `filter()`
+
+``` r
+student_df %>%
+  mutate(Total_Attendance =
+           Week.1.Attendance +
+           Week.2.Attendance +
+           Week.3.Attendance +
+           Week.4.Attendance +
+           Week.5.Attendance) %>%
+  filter(
+    Post.Assessment.Score > Pre.Assessment.Score,
+    Total_Attendance > 2
+  ) %>%
+  select(Name, Grade)
+```
+
+::: callout-question
+**True or False:** You can modify existing columns with `mutate()`.
+:::
+
+::: callout-answer
+**True.** `mutate()` can create or modify columns.
+:::
+
+------------------------------------------------------------------------
+
+## Aggregating Data with `group_by()` and `summarize()`
+
+Sometimes each row represents an individual, but we want **group-level summaries**.
+
+``` r
+student_df %>%
+  group_by(Grade) %>%
+  summarize(
+    Students = n(),
+    Average_Post_Assessment_Score = mean(Post.Assessment.Score)
+  )
+```
+
+### Key Difference
+
+-   `mutate()` → calculations **across columns**
+-   `summarize()` → calculations **across rows**
+
+::: callout-question
+**True or False:** `summarize()` and `mutate()` are interchangeable.
+:::
+
+::: callout-answer
+**False.** They serve different purposes.
+:::
+
+------------------------------------------------------------------------
+
+## Concatenating Data with `bind_rows()`
+
+When multiple datasets have the **same columns**, you can combine them by rows.
+
+``` r
+student_df <- student_df_1 %>%
+  bind_rows(student_df_2)
+```
+
+::: callout-warning
+`bind_rows()` requires the same column structure.
+:::
+
+------------------------------------------------------------------------
+
+## Joining Data with `left_join()`
+
+Joins allow you to combine data from different sources.
+
+``` r
+student_df %>%
+  left_join(assignment_students_df, by = "student_id")
+```
+
+### Join Types
+
+-   `left_join()`
+-   `right_join()`
+-   `inner_join()`
+-   `full_join()`
+
+::: callout-question
+**True or False:** Both tables must contain identical `student_id` values.
+:::
+
+::: callout-answer
+**False.** Missing matches will result in `NA` values.
+:::
+
+------------------------------------------------------------------------
+
+## Chapter Quiz
+
+::: callout-question
+1.  Which function creates new columns?
+2.  Which function selects rows?
+3.  Which function combines tables by key?
+:::
+
+::: callout-answer
+1.  `mutate()`\
+2.  `filter()`\
+3.  `left_join()`
+:::
+
+------------------------------------------------------------------------
+
+## Summary
+
+In this chapter, you learned how to:
+
+-   Work with data frames and tibbles
+-   Use the tidyverse to express data manipulation clearly
+-   Subset, transform, summarize, concatenate, and join data
+-   Build readable, reproducible data pipelines
+
+These skills are essential for real-world data analysis in R.

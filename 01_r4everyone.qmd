@@ -1,0 +1,272 @@
+---
+title: "R for Everyone: Core Programming Concepts"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Overview
+
+This chapter introduces the foundational programming concepts needed to work effectively in R. You will learn how R stores data, how to control program flow, and how to write clear, reusable code.
+
+------------------------------------------------------------------------
+
+## R and RStudio
+
+**R** is a programming language used for data analysis and statistics.\
+**RStudio** is an integrated development environment (IDE) that makes working with R easier.
+
+::: callout-tip
+If you are new to programming, focus on learning **one language at a time**. Once you are comfortable with R, learning Python or another language will be much easier.
+:::
+
+### Quick Check
+
+::: callout-question
+**True or False:** RStudio is a programming language.
+:::
+
+::: callout-answer
+**False.** R is the programming language; RStudio is the IDE.
+:::
+
+------------------------------------------------------------------------
+
+## Computer Programming and Readable Code
+
+As programs grow, we store commands in **R scripts** so they can be run again and understood by others.
+
+``` r
+# This line calculates the mean of exam scores
+mean(scores)
+```
+
+::: callout-important
+Always write code for *humans first, computers second*.
+:::
+
+------------------------------------------------------------------------
+
+## Objects in R
+
+Objects store data in R.
+
+``` r
+blood_pressure <- 120
+```
+
+### Naming Rules
+
+-   Must start with a letter
+-   Can include letters, numbers, `_`, and `.`
+-   No hyphens (`-`)
+
+::: callout-tip
+Prefer descriptive, snake_case names like `blood_pressure`.
+:::
+
+### Practice
+
+::: callout-exercise
+Which of the following are valid object names?
+
+-   `blood_pressure`
+-   `bp`
+-   `bloodPressure`
+-   `measure-BP`
+:::
+
+::: callout-answer
+Valid: `blood_pressure`, `bp`, `bloodPressure`\
+Invalid: `measure-BP`
+:::
+
+------------------------------------------------------------------------
+
+## Vectors
+
+Vectors store multiple values of the same type.
+
+``` r
+grades <- c(80, 95, 90, 90)
+```
+
+### Vectorized Operations
+
+``` r
+grades + 5
+```
+
+All values are updated at once.
+
+### Indexing
+
+``` r
+grades[1]
+grades[1:3]
+grades[grades > 92]
+```
+
+### Practice
+
+::: callout-exercise
+Given:
+
+``` r
+basic_vec <- c(1, 4, 7, 3, 2)
+```
+
+Which indexing returns `4 7 3`?
+:::
+
+::: callout-answer
+``` r
+basic_vec[c(2, 3, 4)]
+```
+:::
+
+------------------------------------------------------------------------
+
+## Matrices
+
+Matrices are two-dimensional data structures.
+
+``` r
+grades <- matrix(
+  c(80, 90, 85, 85,
+    90, 90, 85, 100),
+  nrow = 4,
+  ncol = 2
+)
+```
+
+### Indexing Matrices
+
+``` r
+grades[3:4, 1]
+grades[grades[,1] >= 85, ]
+```
+
+::: callout-note
+Matrix indexing uses `matrix[row, column]`.
+:::
+
+------------------------------------------------------------------------
+
+## Data Frames
+
+Most real-world datasets are stored as **data frames**. They allow different data types across columns.
+
+::: callout-tip
+If you understand vectors and matrices, data frames will feel much more intuitive.
+:::
+
+------------------------------------------------------------------------
+
+## Conditions
+
+Conditions let programs make decisions.
+
+``` r
+if (grade >= 90) {
+  print("That’s great")
+} else if (grade >= 70) {
+  print("You passed")
+} else {
+  print("We got some work to do!")
+}
+```
+
+### Practice
+
+::: callout-exercise
+What message prints if `grade <- 75`?
+:::
+
+::: callout-answer
+`"You passed"`
+:::
+
+------------------------------------------------------------------------
+
+## Loops
+
+Loops repeat code until a condition is met.
+
+### While Loop
+
+``` r
+x <- 1
+while (x < 7) {
+  x <- x + 1
+}
+```
+
+### For Loop
+
+``` r
+for (i in 1:7) {
+  x <- i
+}
+```
+
+::: callout-warning
+If vectorized code works, prefer it over loops.
+:::
+
+------------------------------------------------------------------------
+
+## Functions
+
+Functions package reusable logic.
+
+``` r
+convert_in_cm <- function(measurement, unit) {
+  if (unit == "in") {
+    conversion <- measurement * 2.54
+  } else if (unit == "cm") {
+    conversion <- measurement / 2.54
+  }
+  return(conversion)
+}
+```
+
+``` r
+convert_in_cm(5, "in")
+```
+
+### Practice
+
+::: callout-exercise
+What are the arguments of `convert_in_cm()`?
+:::
+
+::: callout-answer
+`measurement` and `unit`
+:::
+
+------------------------------------------------------------------------
+
+## Chapter Quiz
+
+::: callout-question
+1.  What data structure stores values of different types in columns?
+2.  What symbol starts a comment in R?
+3.  True or False: Loops are always better than vectorized code.
+:::
+
+::: callout-answer
+1.  Data frame\
+2.  `#`\
+3.  False
+:::
+
+------------------------------------------------------------------------
+
+## Summary
+
+You now understand: - Objects and naming - Vectors, matrices, and data frames - Conditions and loops - Writing and using functions - Writing readable R code
+
+These concepts form the foundation for all future R work.
