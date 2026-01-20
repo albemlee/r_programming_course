@@ -12,8 +12,9 @@ book:
     - 02_r4datamanipulation.qmd
     - references.qmd
   sidebar:
-    style: floating
     numbered: false
+
+number-sections: false
     
 crossref: 
   chapters: false

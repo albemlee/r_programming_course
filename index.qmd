@@ -1,6 +1,7 @@
 ---
 title: "Working with Data in R: Data Frames and the Tidyverse"
 format: html
+toc: false
 execute:
   echo: true
   warning: false
