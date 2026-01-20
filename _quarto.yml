@@ -11,6 +11,9 @@ book:
     - 01_r4everyone.qmd
     - 02_r4datamanipulation.qmd
     - references.qmd
+  sidebar:
+    style: floating
+    numbered: false
     
 crossref: 
   chapters: false
@@ -20,8 +23,6 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
 
 editor: visual
 
