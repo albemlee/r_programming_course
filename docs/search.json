@@ -1,191 +1,242 @@
 [
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "References"
-  },
-  {
-    "objectID": "02_r4datamanipulation.html",
-    "href": "02_r4datamanipulation.html",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "",
-    "text": "In this chapter, we move from basic programming concepts to working with real data in R. You’ll learn how to manipulate data frames using the tidyverse, a collection of tools designed to make data analysis readable, expressive, and human-friendly."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#overview",
-    "href": "02_r4datamanipulation.html#overview",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "",
-    "text": "In this chapter, we move from basic programming concepts to working with real data in R. You’ll learn how to manipulate data frames using the tidyverse, a collection of tools designed to make data analysis readable, expressive, and human-friendly."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#data-frames",
-    "href": "02_r4datamanipulation.html#data-frames",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Data Frames",
-    "text": "Data Frames\nMost real-world datasets are stored as data frames.\n\nEach row represents an observation\nEach column represents a variable\nColumns can be different data types\n\nstudent_df\n\nTrue or False: All columns in a data frame must be the same type.\n\n\nFalse. Data frames can contain multiple column types."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#from-data-frames-to-tibbles",
-    "href": "02_r4datamanipulation.html#from-data-frames-to-tibbles",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "From Data Frames to Tibbles",
-    "text": "From Data Frames to Tibbles\nThe tidyverse introduces tibbles, a modern version of data frames.\nTibbles: - Print more cleanly - Are stricter about subsetting - Work seamlessly with tidyverse tools\n\n\n\n\n\n\nNote\n\n\n\nSome older R code expects traditional data frames and may not work with tibbles."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#the-tidyverse",
-    "href": "02_r4datamanipulation.html#the-tidyverse",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "The Tidyverse",
-    "text": "The Tidyverse\nThe tidyverse is a collection of packages that help you “have a conversation with your data.”\n\nBase R vs Tidyverse\n# Base R\nstudent_df[student_df$final_grade &gt;= 90, \"full_name\"]\n\n# Tidyverse\nstudent_df %&gt;%\n  filter(final_grade &gt;= 90) %&gt;%\n  select(full_name)\n\n\n\n\n\n\nTip\n\n\n\nTidyverse code often mirrors how you describe your analysis in plain English.\n\n\n\n\nPractice\n\nWhich of the following uses the tidyverse approach?\na) prescriptions_df %&gt;% filter(RXDUSE == 1) %&gt;% select(SEQN, RXDDRUG)\nb) prescriptions_df[prescriptions_df$RXDUSE == 1, c(\"SEQN\", \"RXDDRUG\")]\n\n\na) uses the tidyverse approach."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#subsetting-with-filter-and-select",
-    "href": "02_r4datamanipulation.html#subsetting-with-filter-and-select",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Subsetting with filter() and select()",
-    "text": "Subsetting with filter() and select()\nstudent_df %&gt;%\n  filter(Post.Assessment.Score &gt; Pre.Assessment.Score) %&gt;%\n  select(Name, Grade)\n\nfilter() selects rows\nselect() selects columns\n\n\n\n\n\n\n\nWarning\n\n\n\nDo not use filter() to select columns — use select()."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#creating-and-modifying-columns-with-mutate",
-    "href": "02_r4datamanipulation.html#creating-and-modifying-columns-with-mutate",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Creating and Modifying Columns with mutate()",
-    "text": "Creating and Modifying Columns with mutate()\nUse mutate() to create new variables or modify existing ones.\nstudent_df %&gt;%\n  mutate(\n    Total_Attendance =\n      Week.1.Attendance +\n      Week.2.Attendance +\n      Week.3.Attendance +\n      Week.4.Attendance +\n      Week.5.Attendance\n  )\n\nCombining mutate() and filter()\nstudent_df %&gt;%\n  mutate(Total_Attendance =\n           Week.1.Attendance +\n           Week.2.Attendance +\n           Week.3.Attendance +\n           Week.4.Attendance +\n           Week.5.Attendance) %&gt;%\n  filter(\n    Post.Assessment.Score &gt; Pre.Assessment.Score,\n    Total_Attendance &gt; 2\n  ) %&gt;%\n  select(Name, Grade)\n\nTrue or False: You can modify existing columns with mutate().\n\n\nTrue. mutate() can create or modify columns."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#aggregating-data-with-group_by-and-summarize",
-    "href": "02_r4datamanipulation.html#aggregating-data-with-group_by-and-summarize",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Aggregating Data with group_by() and summarize()",
-    "text": "Aggregating Data with group_by() and summarize()\nSometimes each row represents an individual, but we want group-level summaries.\nstudent_df %&gt;%\n  group_by(Grade) %&gt;%\n  summarize(\n    Students = n(),\n    Average_Post_Assessment_Score = mean(Post.Assessment.Score)\n  )\n\nKey Difference\n\nmutate() → calculations across columns\nsummarize() → calculations across rows\n\n\nTrue or False: summarize() and mutate() are interchangeable.\n\n\nFalse. They serve different purposes."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#concatenating-data-with-bind_rows",
-    "href": "02_r4datamanipulation.html#concatenating-data-with-bind_rows",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Concatenating Data with bind_rows()",
-    "text": "Concatenating Data with bind_rows()\nWhen multiple datasets have the same columns, you can combine them by rows.\nstudent_df &lt;- student_df_1 %&gt;%\n  bind_rows(student_df_2)\n\n\n\n\n\n\nWarning\n\n\n\nbind_rows() requires the same column structure."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#joining-data-with-left_join",
-    "href": "02_r4datamanipulation.html#joining-data-with-left_join",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Joining Data with left_join()",
-    "text": "Joining Data with left_join()\nJoins allow you to combine data from different sources.\nstudent_df %&gt;%\n  left_join(assignment_students_df, by = \"student_id\")\n\nJoin Types\n\nleft_join()\nright_join()\ninner_join()\nfull_join()\n\n\nTrue or False: Both tables must contain identical student_id values.\n\n\nFalse. Missing matches will result in NA values."
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#chapter-quiz",
-    "href": "02_r4datamanipulation.html#chapter-quiz",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Chapter Quiz",
-    "text": "Chapter Quiz\n\n\nWhich function creates new columns?\nWhich function selects rows?\nWhich function combines tables by key?\n\n\n\n\nmutate()\n\nfilter()\n\nleft_join()"
-  },
-  {
-    "objectID": "02_r4datamanipulation.html#summary",
-    "href": "02_r4datamanipulation.html#summary",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
-    "section": "Summary",
-    "text": "Summary\nIn this chapter, you learned how to:\n\nWork with data frames and tibbles\nUse the tidyverse to express data manipulation clearly\nSubset, transform, summarize, concatenate, and join data\nBuild readable, reproducible data pipelines\n\nThese skills are essential for real-world data analysis in R."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Working with Data in R: Data Frames and the Tidyverse",
+    "title": "R Programming… for non-programmers!",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html",
     "href": "01_r4everyone.html",
-    "title": "R for Everyone: Core Programming Concepts",
+    "title": "2  R for Everyone: Core Programming Concepts",
     "section": "",
-    "text": "This chapter introduces the foundational programming concepts needed to work effectively in R. You will learn how R stores data, how to control program flow, and how to write clear, reusable code."
-  },
-  {
-    "objectID": "01_r4everyone.html#overview",
-    "href": "01_r4everyone.html#overview",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "",
-    "text": "This chapter introduces the foundational programming concepts needed to work effectively in R. You will learn how R stores data, how to control program flow, and how to write clear, reusable code."
+    "text": "2.1 Overview\nThis chapter introduces the foundational programming concepts needed to work effectively in R. You will learn how R stores data, how to control program flow, and how to write clear, reusable code.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#r-and-rstudio",
     "href": "01_r4everyone.html#r-and-rstudio",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "R and RStudio",
-    "text": "R and RStudio\nR is a programming language used for data analysis and statistics.\nRStudio is an integrated development environment (IDE) that makes working with R easier.\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to programming, focus on learning one language at a time. Once you are comfortable with R, learning Python or another language will be much easier.\n\n\n\nQuick Check\n\nTrue or False: RStudio is a programming language.\n\n\nFalse. R is the programming language; RStudio is the IDE."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.2 R and RStudio",
+    "text": "2.2 R and RStudio\nR is a programming language used for data analysis and statistics.\nRStudio is an integrated development environment (IDE) that makes working with R easier.\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to programming, focus on learning one language at a time. Once you are comfortable with R, learning Python or another language will be much easier.\n\n\n\n2.2.1 Quick Check\n\nTrue or False: RStudio is a programming language.\n\n\nFalse. R is the programming language; RStudio is the IDE.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#computer-programming-and-readable-code",
     "href": "01_r4everyone.html#computer-programming-and-readable-code",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Computer Programming and Readable Code",
-    "text": "Computer Programming and Readable Code\nAs programs grow, we store commands in R scripts so they can be run again and understood by others.\n# This line calculates the mean of exam scores\nmean(scores)\n\n\n\n\n\n\nImportant\n\n\n\nAlways write code for humans first, computers second."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.3 Computer Programming and Readable Code",
+    "text": "2.3 Computer Programming and Readable Code\nAs programs grow, we store commands in R scripts so they can be run again and understood by others.\n# This line calculates the mean of exam scores\nmean(scores)\n\n\n\n\n\n\nImportant\n\n\n\nAlways write code for humans first, computers second.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#objects-in-r",
     "href": "01_r4everyone.html#objects-in-r",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Objects in R",
-    "text": "Objects in R\nObjects store data in R.\nblood_pressure &lt;- 120\n\nNaming Rules\n\nMust start with a letter\nCan include letters, numbers, _, and .\nNo hyphens (-)\n\n\n\n\n\n\n\nTip\n\n\n\nPrefer descriptive, snake_case names like blood_pressure.\n\n\n\n\nPractice\n\nWhich of the following are valid object names?\n\nblood_pressure\nbp\nbloodPressure\nmeasure-BP\n\n\n\nValid: blood_pressure, bp, bloodPressure\nInvalid: measure-BP"
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.4 Objects in R",
+    "text": "2.4 Objects in R\nObjects store data in R.\nblood_pressure &lt;- 120\n\n2.4.1 Naming Rules\n\nMust start with a letter\nCan include letters, numbers, _, and .\nNo hyphens (-)\n\n\n\n\n\n\n\nTip\n\n\n\nPrefer descriptive, snake_case names like blood_pressure.\n\n\n\n\n2.4.2 Practice\n\nWhich of the following are valid object names?\n\nblood_pressure\nbp\nbloodPressure\nmeasure-BP\n\n\n\nValid: blood_pressure, bp, bloodPressure\nInvalid: measure-BP",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#vectors",
     "href": "01_r4everyone.html#vectors",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Vectors",
-    "text": "Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\nVectorized Operations\ngrades + 5\nAll values are updated at once.\n\n\nIndexing\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\nPractice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\nbasic_vec[c(2, 3, 4)]"
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.5 Vectors",
+    "text": "2.5 Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\n2.5.1 Vectorized Operations\ngrades + 5\nAll values are updated at once.\n\n\n2.5.2 Indexing\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\n2.5.3 Practice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\nbasic_vec[c(2, 3, 4)]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#matrices",
     "href": "01_r4everyone.html#matrices",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Matrices",
-    "text": "Matrices\nMatrices are two-dimensional data structures.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\nIndexing Matrices\ngrades[3:4, 1]\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column]."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.6 Matrices",
+    "text": "2.6 Matrices\nMatrices are two-dimensional data structures.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\n2.6.1 Indexing Matrices\ngrades[3:4, 1]\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column].",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#data-frames",
     "href": "01_r4everyone.html#data-frames",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Data Frames",
-    "text": "Data Frames\nMost real-world datasets are stored as data frames. They allow different data types across columns.\n\n\n\n\n\n\nTip\n\n\n\nIf you understand vectors and matrices, data frames will feel much more intuitive."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.7 Data Frames",
+    "text": "2.7 Data Frames\nMost real-world datasets are stored as data frames. They allow different data types across columns.\n\n\n\n\n\n\nTip\n\n\n\nIf you understand vectors and matrices, data frames will feel much more intuitive.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#conditions",
     "href": "01_r4everyone.html#conditions",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Conditions",
-    "text": "Conditions\nConditions let programs make decisions.\nif (grade &gt;= 90) {\n  print(\"That’s great\")\n} else if (grade &gt;= 70) {\n  print(\"You passed\")\n} else {\n  print(\"We got some work to do!\")\n}\n\nPractice\n\nWhat message prints if grade &lt;- 75?\n\n\n\"You passed\""
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.8 Conditions",
+    "text": "2.8 Conditions\nConditions let programs make decisions.\nif (grade &gt;= 90) {\n  print(\"That’s great\")\n} else if (grade &gt;= 70) {\n  print(\"You passed\")\n} else {\n  print(\"We got some work to do!\")\n}\n\n2.8.1 Practice\n\nWhat message prints if grade &lt;- 75?\n\n\n\"You passed\"",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#loops",
     "href": "01_r4everyone.html#loops",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Loops",
-    "text": "Loops\nLoops repeat code until a condition is met.\n\nWhile Loop\nx &lt;- 1\nwhile (x &lt; 7) {\n  x &lt;- x + 1\n}\n\n\nFor Loop\nfor (i in 1:7) {\n  x &lt;- i\n}\n\n\n\n\n\n\nWarning\n\n\n\nIf vectorized code works, prefer it over loops."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.9 Loops",
+    "text": "2.9 Loops\nLoops repeat code until a condition is met.\n\n2.9.1 While Loop\nx &lt;- 1\nwhile (x &lt; 7) {\n  x &lt;- x + 1\n}\n\n\n2.9.2 For Loop\nfor (i in 1:7) {\n  x &lt;- i\n}\n\n\n\n\n\n\nWarning\n\n\n\nIf vectorized code works, prefer it over loops.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#functions",
     "href": "01_r4everyone.html#functions",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Functions",
-    "text": "Functions\nFunctions package reusable logic.\nconvert_in_cm &lt;- function(measurement, unit) {\n  if (unit == \"in\") {\n    conversion &lt;- measurement * 2.54\n  } else if (unit == \"cm\") {\n    conversion &lt;- measurement / 2.54\n  }\n  return(conversion)\n}\nconvert_in_cm(5, \"in\")\n\nPractice\n\nWhat are the arguments of convert_in_cm()?\n\n\nmeasurement and unit"
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.10 Functions",
+    "text": "2.10 Functions\nFunctions package reusable logic.\nconvert_in_cm &lt;- function(measurement, unit) {\n  if (unit == \"in\") {\n    conversion &lt;- measurement * 2.54\n  } else if (unit == \"cm\") {\n    conversion &lt;- measurement / 2.54\n  }\n  return(conversion)\n}\nconvert_in_cm(5, \"in\")\n\n2.10.1 Practice\n\nWhat are the arguments of convert_in_cm()?\n\n\nmeasurement and unit",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#chapter-quiz",
     "href": "01_r4everyone.html#chapter-quiz",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Chapter Quiz",
-    "text": "Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\nWhat symbol starts a comment in R?\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nData frame\n\n#\n\nFalse"
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.11 Chapter Quiz",
+    "text": "2.11 Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\nWhat symbol starts a comment in R?\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nData frame\n\n#\n\nFalse",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
   },
   {
     "objectID": "01_r4everyone.html#summary",
     "href": "01_r4everyone.html#summary",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Summary",
-    "text": "Summary\nYou now understand: - Objects and naming - Vectors, matrices, and data frames - Conditions and loops - Writing and using functions - Writing readable R code\nThese concepts form the foundation for all future R work."
+    "title": "2  R for Everyone: Core Programming Concepts",
+    "section": "2.12 Summary",
+    "text": "2.12 Summary\nYou now understand: - Objects and naming - Vectors, matrices, and data frames - Conditions and loops - Writing and using functions - Writing readable R code\nThese concepts form the foundation for all future R work.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html",
+    "href": "02_r4datamanipulation.html",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "",
+    "text": "3.1 Overview\nIn this chapter, we move from basic programming concepts to working with real data in R. You’ll learn how to manipulate data frames using the tidyverse, a collection of tools designed to make data analysis readable, expressive, and human-friendly.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#data-frames",
+    "href": "02_r4datamanipulation.html#data-frames",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.2 Data Frames",
+    "text": "3.2 Data Frames\nMost real-world datasets are stored as data frames.\n\nEach row represents an observation\nEach column represents a variable\nColumns can be different data types\n\nstudent_df\n\nTrue or False: All columns in a data frame must be the same type.\n\n\nFalse. Data frames can contain multiple column types.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#from-data-frames-to-tibbles",
+    "href": "02_r4datamanipulation.html#from-data-frames-to-tibbles",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.3 From Data Frames to Tibbles",
+    "text": "3.3 From Data Frames to Tibbles\nThe tidyverse introduces tibbles, a modern version of data frames.\nTibbles: - Print more cleanly - Are stricter about subsetting - Work seamlessly with tidyverse tools\n\n\n\n\n\n\nNote\n\n\n\nSome older R code expects traditional data frames and may not work with tibbles.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#the-tidyverse",
+    "href": "02_r4datamanipulation.html#the-tidyverse",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.4 The Tidyverse",
+    "text": "3.4 The Tidyverse\nThe tidyverse is a collection of packages that help you “have a conversation with your data.”\n\n3.4.1 Base R vs Tidyverse\n# Base R\nstudent_df[student_df$final_grade &gt;= 90, \"full_name\"]\n\n# Tidyverse\nstudent_df %&gt;%\n  filter(final_grade &gt;= 90) %&gt;%\n  select(full_name)\n\n\n\n\n\n\nTip\n\n\n\nTidyverse code often mirrors how you describe your analysis in plain English.\n\n\n\n\n3.4.2 Practice\n\nWhich of the following uses the tidyverse approach?\na) prescriptions_df %&gt;% filter(RXDUSE == 1) %&gt;% select(SEQN, RXDDRUG)\nb) prescriptions_df[prescriptions_df$RXDUSE == 1, c(\"SEQN\", \"RXDDRUG\")]\n\n\na) uses the tidyverse approach.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#subsetting-with-filter-and-select",
+    "href": "02_r4datamanipulation.html#subsetting-with-filter-and-select",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.5 Subsetting with filter() and select()",
+    "text": "3.5 Subsetting with filter() and select()\nstudent_df %&gt;%\n  filter(Post.Assessment.Score &gt; Pre.Assessment.Score) %&gt;%\n  select(Name, Grade)\n\nfilter() selects rows\nselect() selects columns\n\n\n\n\n\n\n\nWarning\n\n\n\nDo not use filter() to select columns — use select().",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#creating-and-modifying-columns-with-mutate",
+    "href": "02_r4datamanipulation.html#creating-and-modifying-columns-with-mutate",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.6 Creating and Modifying Columns with mutate()",
+    "text": "3.6 Creating and Modifying Columns with mutate()\nUse mutate() to create new variables or modify existing ones.\nstudent_df %&gt;%\n  mutate(\n    Total_Attendance =\n      Week.1.Attendance +\n      Week.2.Attendance +\n      Week.3.Attendance +\n      Week.4.Attendance +\n      Week.5.Attendance\n  )\n\n3.6.1 Combining mutate() and filter()\nstudent_df %&gt;%\n  mutate(Total_Attendance =\n           Week.1.Attendance +\n           Week.2.Attendance +\n           Week.3.Attendance +\n           Week.4.Attendance +\n           Week.5.Attendance) %&gt;%\n  filter(\n    Post.Assessment.Score &gt; Pre.Assessment.Score,\n    Total_Attendance &gt; 2\n  ) %&gt;%\n  select(Name, Grade)\n\nTrue or False: You can modify existing columns with mutate().\n\n\nTrue. mutate() can create or modify columns.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#aggregating-data-with-group_by-and-summarize",
+    "href": "02_r4datamanipulation.html#aggregating-data-with-group_by-and-summarize",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.7 Aggregating Data with group_by() and summarize()",
+    "text": "3.7 Aggregating Data with group_by() and summarize()\nSometimes each row represents an individual, but we want group-level summaries.\nstudent_df %&gt;%\n  group_by(Grade) %&gt;%\n  summarize(\n    Students = n(),\n    Average_Post_Assessment_Score = mean(Post.Assessment.Score)\n  )\n\n3.7.1 Key Difference\n\nmutate() → calculations across columns\nsummarize() → calculations across rows\n\n\nTrue or False: summarize() and mutate() are interchangeable.\n\n\nFalse. They serve different purposes.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#concatenating-data-with-bind_rows",
+    "href": "02_r4datamanipulation.html#concatenating-data-with-bind_rows",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.8 Concatenating Data with bind_rows()",
+    "text": "3.8 Concatenating Data with bind_rows()\nWhen multiple datasets have the same columns, you can combine them by rows.\nstudent_df &lt;- student_df_1 %&gt;%\n  bind_rows(student_df_2)\n\n\n\n\n\n\nWarning\n\n\n\nbind_rows() requires the same column structure.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#joining-data-with-left_join",
+    "href": "02_r4datamanipulation.html#joining-data-with-left_join",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.9 Joining Data with left_join()",
+    "text": "3.9 Joining Data with left_join()\nJoins allow you to combine data from different sources.\nstudent_df %&gt;%\n  left_join(assignment_students_df, by = \"student_id\")\n\n3.9.1 Join Types\n\nleft_join()\nright_join()\ninner_join()\nfull_join()\n\n\nTrue or False: Both tables must contain identical student_id values.\n\n\nFalse. Missing matches will result in NA values.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#chapter-quiz",
+    "href": "02_r4datamanipulation.html#chapter-quiz",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.10 Chapter Quiz",
+    "text": "3.10 Chapter Quiz\n\n\nWhich function creates new columns?\nWhich function selects rows?\nWhich function combines tables by key?\n\n\n\n\nmutate()\n\nfilter()\n\nleft_join()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
+  },
+  {
+    "objectID": "02_r4datamanipulation.html#summary",
+    "href": "02_r4datamanipulation.html#summary",
+    "title": "3  Working with Data in R: Data Frames and the Tidyverse",
+    "section": "3.11 Summary",
+    "text": "3.11 Summary\nIn this chapter, you learned how to:\n\nWork with data frames and tibbles\nUse the tidyverse to express data manipulation clearly\nSubset, transform, summarize, concatenate, and join data\nBuild readable, reproducible data pipelines\n\nThese skills are essential for real-world data analysis in R.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Working with Data in R: Data Frames and the Tidyverse</span>"
+    ]
   }
 ]

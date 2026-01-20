@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Working with Data in R: Data Frames and the Tidyverse</title>
+<title>3&nbsp; Working with Data in R: Data Frames and the Tidyverse – R Programming... for non-programmers!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,11 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./01_r4everyone.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -74,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1c33c0780a01951c1c2d77b4a45239a1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3778d3e438078121318a23701f9f68bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,20 +109,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_r4datamanipulation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with Data in R: Data Frames and the Tidyverse</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R Programming… for non-programmers!</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Working with Data in R: Data Frames and the Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_r4everyone.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R for Everyone: Core Programming Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_r4datamanipulation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with Data in R: Data Frames and the Tidyverse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.2</span> Data Frames</a></li>
+  <li><a href="#from-data-frames-to-tibbles" id="toc-from-data-frames-to-tibbles" class="nav-link" data-scroll-target="#from-data-frames-to-tibbles"><span class="header-section-number">3.3</span> From Data Frames to Tibbles</a></li>
+  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">3.4</span> The Tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#base-r-vs-tidyverse" id="toc-base-r-vs-tidyverse" class="nav-link" data-scroll-target="#base-r-vs-tidyverse"><span class="header-section-number">3.4.1</span> Base R vs Tidyverse</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">3.4.2</span> Practice</a></li>
+  </ul></li>
+  <li><a href="#subsetting-with-filter-and-select" id="toc-subsetting-with-filter-and-select" class="nav-link" data-scroll-target="#subsetting-with-filter-and-select"><span class="header-section-number">3.5</span> Subsetting with <code>filter()</code> and <code>select()</code></a></li>
+  <li><a href="#creating-and-modifying-columns-with-mutate" id="toc-creating-and-modifying-columns-with-mutate" class="nav-link" data-scroll-target="#creating-and-modifying-columns-with-mutate"><span class="header-section-number">3.6</span> Creating and Modifying Columns with <code>mutate()</code></a>
+  <ul class="collapse">
+  <li><a href="#combining-mutate-and-filter" id="toc-combining-mutate-and-filter" class="nav-link" data-scroll-target="#combining-mutate-and-filter"><span class="header-section-number">3.6.1</span> Combining <code>mutate()</code> and <code>filter()</code></a></li>
+  </ul></li>
+  <li><a href="#aggregating-data-with-group_by-and-summarize" id="toc-aggregating-data-with-group_by-and-summarize" class="nav-link" data-scroll-target="#aggregating-data-with-group_by-and-summarize"><span class="header-section-number">3.7</span> Aggregating Data with <code>group_by()</code> and <code>summarize()</code></a>
+  <ul class="collapse">
+  <li><a href="#key-difference" id="toc-key-difference" class="nav-link" data-scroll-target="#key-difference"><span class="header-section-number">3.7.1</span> Key Difference</a></li>
+  </ul></li>
+  <li><a href="#concatenating-data-with-bind_rows" id="toc-concatenating-data-with-bind_rows" class="nav-link" data-scroll-target="#concatenating-data-with-bind_rows"><span class="header-section-number">3.8</span> Concatenating Data with <code>bind_rows()</code></a></li>
+  <li><a href="#joining-data-with-left_join" id="toc-joining-data-with-left_join" class="nav-link" data-scroll-target="#joining-data-with-left_join"><span class="header-section-number">3.9</span> Joining Data with <code>left_join()</code></a>
+  <ul class="collapse">
+  <li><a href="#join-types" id="toc-join-types" class="nav-link" data-scroll-target="#join-types"><span class="header-section-number">3.9.1</span> Join Types</a></li>
+  </ul></li>
+  <li><a href="#chapter-quiz" id="toc-chapter-quiz" class="nav-link" data-scroll-target="#chapter-quiz"><span class="header-section-number">3.10</span> Chapter Quiz</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.11</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Working with Data in R: Data Frames and the Tidyverse</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Working with Data in R: Data Frames and the Tidyverse</span></h1>
 </div>
 
 
@@ -136,13 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="overview" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
 <p>In this chapter, we move from basic programming concepts to <strong>working with real data</strong> in R. You’ll learn how to manipulate data frames using the <strong>tidyverse</strong>, a collection of tools designed to make data analysis readable, expressive, and human-friendly.</p>
 <hr>
 </section>
-<section id="data-frames" class="level2">
-<h2 class="anchored" data-anchor-id="data-frames">Data Frames</h2>
+<section id="data-frames" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.2</span> Data Frames</h2>
 <p>Most real-world datasets are stored as <strong>data frames</strong>.</p>
 <ul>
 <li>Each <strong>row</strong> represents an observation</li>
@@ -158,8 +248,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="from-data-frames-to-tibbles" class="level2">
-<h2 class="anchored" data-anchor-id="from-data-frames-to-tibbles">From Data Frames to Tibbles</h2>
+<section id="from-data-frames-to-tibbles" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="from-data-frames-to-tibbles"><span class="header-section-number">3.3</span> From Data Frames to Tibbles</h2>
 <p>The tidyverse introduces <strong>tibbles</strong>, a modern version of data frames.</p>
 <p>Tibbles: - Print more cleanly - Are stricter about subsetting - Work seamlessly with tidyverse tools</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -177,11 +267,11 @@ Note
 </div>
 <hr>
 </section>
-<section id="the-tidyverse" class="level2">
-<h2 class="anchored" data-anchor-id="the-tidyverse">The Tidyverse</h2>
+<section id="the-tidyverse" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="the-tidyverse"><span class="header-section-number">3.4</span> The Tidyverse</h2>
 <p>The <strong>tidyverse</strong> is a collection of packages that help you “have a conversation with your data.”</p>
-<section id="base-r-vs-tidyverse" class="level3">
-<h3 class="anchored" data-anchor-id="base-r-vs-tidyverse">Base R vs Tidyverse</h3>
+<section id="base-r-vs-tidyverse" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="base-r-vs-tidyverse"><span class="header-section-number">3.4.1</span> Base R vs Tidyverse</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>student_df[student_df<span class="sc">$</span>final_grade <span class="sc">&gt;=</span> <span class="dv">90</span>, <span class="st">"full_name"</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -203,8 +293,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="practice" class="level3">
-<h3 class="anchored" data-anchor-id="practice">Practice</h3>
+<section id="practice" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="practice"><span class="header-section-number">3.4.2</span> Practice</h3>
 <div class="callout-exercise">
 <p>Which of the following uses the tidyverse approach?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a<span class="er">)</span> prescriptions_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(RXDUSE <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(SEQN, RXDDRUG)</span>
@@ -216,8 +306,8 @@ Tip
 <hr>
 </section>
 </section>
-<section id="subsetting-with-filter-and-select" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting-with-filter-and-select">Subsetting with <code>filter()</code> and <code>select()</code></h2>
+<section id="subsetting-with-filter-and-select" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="subsetting-with-filter-and-select"><span class="header-section-number">3.5</span> Subsetting with <code>filter()</code> and <code>select()</code></h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Post.Assessment.Score <span class="sc">&gt;</span> Pre.Assessment.Score) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Grade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -240,8 +330,8 @@ Warning
 </div>
 <hr>
 </section>
-<section id="creating-and-modifying-columns-with-mutate" class="level2">
-<h2 class="anchored" data-anchor-id="creating-and-modifying-columns-with-mutate">Creating and Modifying Columns with <code>mutate()</code></h2>
+<section id="creating-and-modifying-columns-with-mutate" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="creating-and-modifying-columns-with-mutate"><span class="header-section-number">3.6</span> Creating and Modifying Columns with <code>mutate()</code></h2>
 <p>Use <code>mutate()</code> to create new variables or modify existing ones.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -252,8 +342,8 @@ Warning
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      Week.<span class="fl">4.</span>Attendance <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      Week.<span class="fl">5.</span>Attendance</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="combining-mutate-and-filter" class="level3">
-<h3 class="anchored" data-anchor-id="combining-mutate-and-filter">Combining <code>mutate()</code> and <code>filter()</code></h3>
+<section id="combining-mutate-and-filter" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="combining-mutate-and-filter"><span class="header-section-number">3.6.1</span> Combining <code>mutate()</code> and <code>filter()</code></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Total_Attendance =</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           Week.<span class="fl">1.</span>Attendance <span class="sc">+</span></span>
@@ -275,8 +365,8 @@ Warning
 <hr>
 </section>
 </section>
-<section id="aggregating-data-with-group_by-and-summarize" class="level2">
-<h2 class="anchored" data-anchor-id="aggregating-data-with-group_by-and-summarize">Aggregating Data with <code>group_by()</code> and <code>summarize()</code></h2>
+<section id="aggregating-data-with-group_by-and-summarize" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="aggregating-data-with-group_by-and-summarize"><span class="header-section-number">3.7</span> Aggregating Data with <code>group_by()</code> and <code>summarize()</code></h2>
 <p>Sometimes each row represents an individual, but we want <strong>group-level summaries</strong>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Grade) <span class="sc">%&gt;%</span></span>
@@ -284,8 +374,8 @@ Warning
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Students =</span> <span class="fu">n</span>(),</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_Post_Assessment_Score =</span> <span class="fu">mean</span>(Post.Assessment.Score)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="key-difference" class="level3">
-<h3 class="anchored" data-anchor-id="key-difference">Key Difference</h3>
+<section id="key-difference" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="key-difference"><span class="header-section-number">3.7.1</span> Key Difference</h3>
 <ul>
 <li><code>mutate()</code> → calculations <strong>across columns</strong></li>
 <li><code>summarize()</code> → calculations <strong>across rows</strong></li>
@@ -299,8 +389,8 @@ Warning
 <hr>
 </section>
 </section>
-<section id="concatenating-data-with-bind_rows" class="level2">
-<h2 class="anchored" data-anchor-id="concatenating-data-with-bind_rows">Concatenating Data with <code>bind_rows()</code></h2>
+<section id="concatenating-data-with-bind_rows" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="concatenating-data-with-bind_rows"><span class="header-section-number">3.8</span> Concatenating Data with <code>bind_rows()</code></h2>
 <p>When multiple datasets have the <strong>same columns</strong>, you can combine them by rows.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="ot">&lt;-</span> student_df_1 <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(student_df_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -319,13 +409,13 @@ Warning
 </div>
 <hr>
 </section>
-<section id="joining-data-with-left_join" class="level2">
-<h2 class="anchored" data-anchor-id="joining-data-with-left_join">Joining Data with <code>left_join()</code></h2>
+<section id="joining-data-with-left_join" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="joining-data-with-left_join"><span class="header-section-number">3.9</span> Joining Data with <code>left_join()</code></h2>
 <p>Joins allow you to combine data from different sources.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>student_df <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(assignment_students_df, <span class="at">by =</span> <span class="st">"student_id"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="join-types" class="level3">
-<h3 class="anchored" data-anchor-id="join-types">Join Types</h3>
+<section id="join-types" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="join-types"><span class="header-section-number">3.9.1</span> Join Types</h3>
 <ul>
 <li><code>left_join()</code></li>
 <li><code>right_join()</code></li>
@@ -341,8 +431,8 @@ Warning
 <hr>
 </section>
 </section>
-<section id="chapter-quiz" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-quiz">Chapter Quiz</h2>
+<section id="chapter-quiz" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="chapter-quiz"><span class="header-section-number">3.10</span> Chapter Quiz</h2>
 <div class="callout-question">
 <ol type="1">
 <li>Which function creates new columns?</li>
@@ -361,8 +451,8 @@ Warning
 </div>
 <hr>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="summary" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.11</span> Summary</h2>
 <p>In this chapter, you learned how to:</p>
 <ul>
 <li>Work with data frames and tibbles</li>
@@ -776,6 +866,18 @@ Warning
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01_r4everyone.html" class="pagination-link" aria-label="R for Everyone: Core Programming Concepts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R for Everyone: Core Programming Concepts</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
