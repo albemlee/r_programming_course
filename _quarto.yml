@@ -11,6 +11,9 @@ book:
     - 01_r4everyone.qmd
     - 02_r4datamanipulation.qmd
     - references.qmd
+    
+crossref: 
+  chapters: false
 
 bibliography: references.bib
 
