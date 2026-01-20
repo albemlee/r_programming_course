@@ -2,13 +2,12 @@ project:
   type: website
   output-dir: docs
 
-
-
 book:
   title: "R Programming... for non-programmers!"
   author: "Albert Lee"
   date: "1/19/2026"
   chapters:
+    - index.qmd
     - 01_r4everyone.qmd
     - 02_r4datamanipulation.qmd
     - references.qmd

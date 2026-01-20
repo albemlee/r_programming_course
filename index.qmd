@@ -1,3 +1,12 @@
+---
+title: "Working with Data in R: Data Frames and the Tidyverse"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
 # Preface {.unnumbered}
 
 This is a Quarto book.
