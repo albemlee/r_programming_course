@@ -104,7 +104,7 @@
     "href": "01_r4everyone.html#chapter-quiz",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Chapter Quiz",
-    "text": "Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\n\n\n\n\nClick to see answer\n\nData frame\n\n\nWhat symbol starts a comment in R?\n\n\n\n\nClick to see answer\n\n#\n\n\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nClick to see answer\n\nFalse",
+    "text": "Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\n\n\n\n\nClick to see answer\n\nData frame\n\n\n\nWhat symbol starts a comment in R?\n\n\n\n\nClick to see answer\n\n#\n\n\n\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nClick to see answer\n\nFalse",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]

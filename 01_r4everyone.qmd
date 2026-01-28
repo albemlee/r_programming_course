@@ -31,7 +31,7 @@ If you are new to programming, focus on learning **one language at a time**. Onc
 <details>
   <summary>Click to see answer</summary>
   **False.** R is the programming language; RStudio is the IDE.
-
+</details>
 
 ------------------------------------------------------------------------
 
@@ -90,6 +90,7 @@ Which of the following are valid object names?
   <summary>Click to see answer</summary>
   Valid: `blood_pressure`, `bp`, `bloodPressure`\
   Invalid: `measure-BP`
+</details>
 
 ------------------------------------------------------------------------
 
@@ -116,6 +117,7 @@ What message prints if `grade <- 75`?
 <details>
   <summary>Click to see answer</summary>
   `"You passed"`
+</details>
 
 ------------------------------------------------------------------------
 
@@ -178,6 +180,7 @@ What are the arguments of `convert_in_cm()`?
   ``` r
   `measurement` and `unit`
   ```
+</details>
 
 ------------------------------------------------------------------------
 
@@ -235,6 +238,7 @@ Which indexing returns `4 7 3`?
   ``` r
   basic_vec[c(2, 3, 4)]
   ```
+</details>
 
 ------------------------------------------------------------------------
 
@@ -280,6 +284,7 @@ Matrix indexing uses `matrix[row, column]`.
 <details>
   <summary>Click to see answer</summary>
   Data frame
+</details>
 
 ::: callout-question
 2.  What symbol starts a comment in R?
@@ -288,6 +293,7 @@ Matrix indexing uses `matrix[row, column]`.
 <details>
   <summary>Click to see answer</summary>
   `#`
+</details>
 
 ::: callout-question
 3.  True or False: Loops are always better than vectorized code.
@@ -296,6 +302,7 @@ Matrix indexing uses `matrix[row, column]`.
 <details>
   <summary>Click to see answer</summary>
   False
+</details>
 
 ------------------------------------------------------------------------
 
