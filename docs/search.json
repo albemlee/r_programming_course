@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "R Programming… for analysts who aren’t programmers!",
     "section": "",
-    "text": "Who is this book for?\nThis book is for people who work with data using tools like Excel or Google Sheets but don’t consider themselves computer programmers. Not every analyst needs to become a data scientist or software engineer. Still, nearly all of us can benefit from learning a bit of programming to deepen and extend the kinds of analyses we can do.\nThis book is designed as a gentle, accessible starting point.\n\n\nAcknowledgement\nThe topics covered in this book are heavily based on the R for Everyone and R for Data Manipulation workshops I taught during my time working for UCSF library.",
+    "text": "Who is this for?\nThis book is for people who work with data using tools like Excel or Google Sheets but don’t consider themselves computer programmers. Not every analyst needs to become a data scientist or software engineer. Still, nearly all of us can benefit from learning a bit of programming to deepen and extend the kinds of analyses we can do.\nThis book is designed as a gentle, accessible starting point.\n\n\nAcknowledgement\nThe topics covered in this book are heavily based on the R for Everyone and R for Data Manipulation workshops I taught during my time working for UCSF library.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -24,7 +24,7 @@
     "href": "01_r4everyone.html#r-and-rstudio",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "R and RStudio",
-    "text": "R and RStudio\nR is a programming language used for data analysis and statistics.\nRStudio is an integrated development environment (IDE) that makes working with R easier.\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to programming, focus on learning one language at a time. Once you are comfortable with R, learning Python or another language will be much easier.\n\n\n\nQuick Check\n\nTrue or False: RStudio is a programming language.\n\n\nFalse. R is the programming language; RStudio is the IDE.",
+    "text": "R and RStudio\nR is a programming language used for data analysis and statistics.\nRStudio is an integrated development environment (IDE) that makes working with R easier.\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to programming, focus on learning one language at a time. Once you are comfortable with R, learning Python or another language will be much easier.\n\n\n\nQuick Check\n\nTrue or False: RStudio is a programming language.\n\n\n\nClick to see answer\n\nFalse. R is the programming language; RStudio is the IDE.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "01_r4everyone.html#objects-in-r",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Objects in R",
-    "text": "Objects in R\nObjects store data in R.\nblood_pressure &lt;- 120\n\nNaming Rules\n\nMust start with a letter\nCan include letters, numbers, _, and .\nNo hyphens (-)\n\n\n\n\n\n\n\nTip\n\n\n\nPrefer descriptive, snake_case names like blood_pressure.\n\n\n\n\nPractice\n\nWhich of the following are valid object names?\n\nblood_pressure\nbp\nbloodPressure\nmeasure-BP\n\n\n\nValid: blood_pressure, bp, bloodPressure\nInvalid: measure-BP",
+    "text": "Objects in R\nObjects (also known as variables) store data in R.\nblood_pressure &lt;- 120\nIn the example above: - blood_pressure is the name of the object. - &lt;- is the assignment operator. - 120 is the value we are assigning.\nThe line reads as Assign 120 to blood_pressure.\n\nNaming Rules\n\nMust start with a letter\nCan include letters, numbers, _, and .\nNo hyphens (-)\n\n\n\n\n\n\n\nTip\n\n\n\nPrefer descriptive, snake_case names like blood_pressure.\n\n\n\nPractice\n\nWhich of the following are valid object names?\n\nblood_pressure\nbp\nbloodPressure\nmeasure-BP\n\n\n\n\nClick to see answer\n\nValid: blood_pressure, bp, bloodPressure\nInvalid: measure-BP",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "01_r4everyone.html#vectors",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Vectors",
-    "text": "Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\nVectorized Operations\ngrades + 5\nAll values are updated at once.\n\n\nIndexing\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\nPractice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\nbasic_vec[c(2, 3, 4)]",
+    "text": "Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\nVectorized Operations\ngrades + 5\nAll values in the vector are updated at once.\n\n\nIndexing\nIndexing is a fancy way of saying “selecting” values from a vector\nFor example to select the first value within the grades vector…\ngrades[1]\n… To select values 1 through 3 within the grades vector…\ngrades[1:3]\n… To select all values within grades that are greater than 92 …\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\nPractice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\n\nClick to see answer\n\n  basic_vec[c(2, 3, 4)]",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "01_r4everyone.html#matrices",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Matrices",
-    "text": "Matrices\nMatrices are two-dimensional data structures.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\nIndexing Matrices\ngrades[3:4, 1]\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column].",
+    "text": "Matrices\nMatrices are two-dimensional data structures.\nThe code below creates a 4 row x 2 column matrix.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\nIndexing Matrices\nJust as we can index (i.e., “select”) values from a vector, we can select values from a matrix.\nTo select the 3rd and 4rd row, 1st column of the grades matrix.\ngrades[3:4, 1]\n…To select all rows where the 1st column is greater than or equal to 85, and all columns…\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column].",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "01_r4everyone.html#conditions",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Conditions",
-    "text": "Conditions\nConditions let programs make decisions.\nif (grade &gt;= 90) {\n  print(\"That’s great\")\n} else if (grade &gt;= 70) {\n  print(\"You passed\")\n} else {\n  print(\"We got some work to do!\")\n}\n\nPractice\n\nWhat message prints if grade &lt;- 75?\n\n\n\"You passed\"",
+    "text": "Conditions\nConditions let programs make decisions.\nif (grade &gt;= 90) {\n  print(\"That’s great\")\n} else if (grade &gt;= 70) {\n  print(\"You passed\")\n} else {\n  print(\"We got some work to do!\")\n}\n\nPractice\n\nWhat message prints if grade &lt;- 75?\n\n\n\nClick to see answer\n\n\"You passed\"",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -94,7 +94,7 @@
     "href": "01_r4everyone.html#loops",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Loops",
-    "text": "Loops\nLoops repeat code until a condition is met.\n\nWhile Loop\nx &lt;- 1\nwhile (x &lt; 7) {\n  x &lt;- x + 1\n}\n\n\nFor Loop\nfor (i in 1:7) {\n  x &lt;- i\n}\n\n\n\n\n\n\nWarning\n\n\n\nIf vectorized code works, prefer it over loops.",
+    "text": "Loops\nLoops repeat code.\n\nWhile Loop\nA while loop repeats code while a condition is true.\nThe code below repeats x &lt;- x + 1 until x &lt; 7 is no longer TRUE.\nx &lt;- 1\nwhile (x &lt; 7) {\n  x &lt;- x + 1\n}\n\n\nFor Loop\nA for loop repeats code for a fixed sequence.\nThe code below repeats x &lt;- i for values of i between 1 and 7.\nfor (i in 1:7) {\n  x &lt;- i\n}",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -104,7 +104,7 @@
     "href": "01_r4everyone.html#functions",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Functions",
-    "text": "Functions\nFunctions package reusable logic.\nconvert_in_cm &lt;- function(measurement, unit) {\n  if (unit == \"in\") {\n    conversion &lt;- measurement * 2.54\n  } else if (unit == \"cm\") {\n    conversion &lt;- measurement / 2.54\n  }\n  return(conversion)\n}\nconvert_in_cm(5, \"in\")\n\nPractice\n\nWhat are the arguments of convert_in_cm()?\n\n\nmeasurement and unit",
+    "text": "Functions\nFunctions package reusable logic.\nconvert_in_cm &lt;- function(measurement, unit) {\n  if (unit == \"in\") {\n    conversion &lt;- measurement * 2.54\n  } else if (unit == \"cm\") {\n    conversion &lt;- measurement / 2.54\n  }\n  return(conversion)\n}\nconvert_in_cm(5, \"in\")\n\nPractice\n\nWhat are the arguments of convert_in_cm()?\n\n\n\nClick to see answer\n\n  `measurement` and `unit`",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -114,7 +114,7 @@
     "href": "01_r4everyone.html#chapter-quiz",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Chapter Quiz",
-    "text": "Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\nWhat symbol starts a comment in R?\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nData frame\n\n#\n\nFalse",
+    "text": "Chapter Quiz\n\n\nWhat data structure stores values of different types in columns?\n\n\n\n\nClick to see answer\n\nData frame\n\n\nWhat symbol starts a comment in R?\n\n\n\n\nClick to see answer\n\n#\n\n\nTrue or False: Loops are always better than vectorized code.\n\n\n\n\nClick to see answer\n\nFalse",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
@@ -124,7 +124,7 @@
     "href": "01_r4everyone.html#summary",
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Summary",
-    "text": "Summary\nYou now understand: - Objects and naming - Vectors, matrices, and data frames - Conditions and loops - Writing and using functions - Writing readable R code\nThese concepts form the foundation for all future R work.",
+    "text": "Summary\nYou now understand: - Objects and naming - Conditions and loops - Writing and using functions - Vectors, matrices, and data frames\nThese concepts form the foundation for all future R work.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]

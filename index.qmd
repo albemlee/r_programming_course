@@ -11,7 +11,7 @@ execute:
 
 ![](images/cover.png){fig-alt="Bridge between spreadsheets to computer programming"}
 
-# Who is this book for?
+# Who is this for?
 
 This book is for people who work with data using tools like Excel or Google Sheets but don’t consider themselves computer programmers. Not every analyst needs to become a data scientist or software engineer. Still, nearly all of us can benefit from learning a bit of programming to deepen and extend the kinds of analyses we can do.  
 

@@ -22,15 +22,16 @@ This chapter introduces the foundational programming concepts needed to work eff
 If you are new to programming, focus on learning **one language at a time**. Once you are comfortable with R, learning Python or another language will be much easier.
 :::
 
-### Quick Check
+#### Quick Check
 
 ::: callout-question
 **True or False:** RStudio is a programming language.
 :::
 
-::: callout-answer
-**False.** R is the programming language; RStudio is the IDE.
-:::
+<details>
+  <summary>Click to see answer</summary>
+  **False.** R is the programming language; RStudio is the IDE.
+
 
 ------------------------------------------------------------------------
 
@@ -51,11 +52,18 @@ Always write code for *humans first, computers second*.
 
 ## Objects in R
 
-Objects store data in R.
+**Objects** (also known as variables) store data in R.
 
 ``` r
 blood_pressure <- 120
 ```
+
+In the example above:
+- `blood_pressure` is the name of the object.
+- `<-` is the **assignment operator**.
+- `120` is the value we are assigning.
+
+The line reads as *Assign 120 to blood_pressure.*
 
 ### Naming Rules
 
@@ -64,10 +72,10 @@ blood_pressure <- 120
 -   No hyphens (`-`)
 
 ::: callout-tip
-Prefer descriptive, snake_case names like `blood_pressure`.
+Prefer descriptive, *snake_case* names like `blood_pressure`.
 :::
 
-### Practice
+#### Practice
 
 ::: callout-exercise
 Which of the following are valid object names?
@@ -78,90 +86,10 @@ Which of the following are valid object names?
 -   `measure-BP`
 :::
 
-::: callout-answer
-Valid: `blood_pressure`, `bp`, `bloodPressure`\
-Invalid: `measure-BP`
-:::
-
-------------------------------------------------------------------------
-
-## Vectors
-
-Vectors store multiple values of the same type.
-
-``` r
-grades <- c(80, 95, 90, 90)
-```
-
-### Vectorized Operations
-
-``` r
-grades + 5
-```
-
-All values are updated at once.
-
-### Indexing
-
-``` r
-grades[1]
-grades[1:3]
-grades[grades > 92]
-```
-
-### Practice
-
-::: callout-exercise
-Given:
-
-``` r
-basic_vec <- c(1, 4, 7, 3, 2)
-```
-
-Which indexing returns `4 7 3`?
-:::
-
-::: callout-answer
-``` r
-basic_vec[c(2, 3, 4)]
-```
-:::
-
-------------------------------------------------------------------------
-
-## Matrices
-
-Matrices are two-dimensional data structures.
-
-``` r
-grades <- matrix(
-  c(80, 90, 85, 85,
-    90, 90, 85, 100),
-  nrow = 4,
-  ncol = 2
-)
-```
-
-### Indexing Matrices
-
-``` r
-grades[3:4, 1]
-grades[grades[,1] >= 85, ]
-```
-
-::: callout-note
-Matrix indexing uses `matrix[row, column]`.
-:::
-
-------------------------------------------------------------------------
-
-## Data Frames
-
-Most real-world datasets are stored as **data frames**. They allow different data types across columns.
-
-::: callout-tip
-If you understand vectors and matrices, data frames will feel much more intuitive.
-:::
+<details>
+  <summary>Click to see answer</summary>
+  Valid: `blood_pressure`, `bp`, `bloodPressure`\
+  Invalid: `measure-BP`
 
 ------------------------------------------------------------------------
 
@@ -185,18 +113,21 @@ if (grade >= 90) {
 What message prints if `grade <- 75`?
 :::
 
-::: callout-answer
-`"You passed"`
-:::
+<details>
+  <summary>Click to see answer</summary>
+  `"You passed"`
 
 ------------------------------------------------------------------------
 
 ## Loops
 
-Loops repeat code until a condition is met.
+Loops repeat code.
 
 ### While Loop
 
+A `while` loop repeats code while a condition is true.
+
+The code below repeats `x <- x + 1` until `x < 7` is no longer `TRUE`.
 ``` r
 x <- 1
 while (x < 7) {
@@ -206,15 +137,14 @@ while (x < 7) {
 
 ### For Loop
 
+A `for` loop repeats code for a fixed sequence.
+
+The code below repeats `x <- i` for values of i between 1 and 7.
 ``` r
 for (i in 1:7) {
   x <- i
 }
 ```
-
-::: callout-warning
-If vectorized code works, prefer it over loops.
-:::
 
 ------------------------------------------------------------------------
 
@@ -243,8 +173,100 @@ convert_in_cm(5, "in")
 What are the arguments of `convert_in_cm()`?
 :::
 
-::: callout-answer
-`measurement` and `unit`
+<details>
+  <summary>Click to see answer</summary>
+  ``` r
+  `measurement` and `unit`
+  ```
+
+------------------------------------------------------------------------
+
+## Vectors
+
+Vectors store multiple values of the same type.
+
+``` r
+grades <- c(80, 95, 90, 90)
+```
+
+### Vectorized Operations
+
+``` r
+grades + 5
+```
+
+All values in the vector are updated at once.
+
+### Indexing
+
+Indexing is a fancy way of saying "selecting" values from a vector
+
+For example to select the first value within the `grades` vector...
+``` r
+grades[1]
+```
+
+... To select values 1 through 3 within the `grades` vector...
+``` r
+grades[1:3]
+```
+
+... To select all values within `grades` that are greater than 92 ...
+``` r
+grades[1]
+grades[1:3]
+grades[grades > 92]
+```
+
+### Practice
+
+::: callout-exercise
+Given:
+
+``` r
+basic_vec <- c(1, 4, 7, 3, 2)
+```
+
+Which indexing returns `4 7 3`?
+:::
+
+<details>
+  <summary>Click to see answer</summary>
+  ``` r
+  basic_vec[c(2, 3, 4)]
+  ```
+
+------------------------------------------------------------------------
+
+## Matrices
+
+Matrices are two-dimensional data structures.
+
+The code below creates a 4 row x 2 column matrix.
+``` r
+grades <- matrix(
+  c(80, 90, 85, 85,
+    90, 90, 85, 100),
+  nrow = 4,
+  ncol = 2
+)
+```
+
+### Indexing Matrices
+Just as we can index (i.e., "select") values from a vector, we can select values from a matrix.
+
+To select the 3rd and 4rd row, 1st column of the `grades` matrix.
+``` r
+grades[3:4, 1]
+```
+
+...To select all rows where the 1st column is greater than or equal to 85, and all columns...
+``` r
+grades[grades[,1] >= 85, ]
+```
+
+::: callout-note
+Matrix indexing uses `matrix[row, column]`.
 :::
 
 ------------------------------------------------------------------------
@@ -253,20 +275,33 @@ What are the arguments of `convert_in_cm()`?
 
 ::: callout-question
 1.  What data structure stores values of different types in columns?
+:::
+<details>
+  <summary>Click to see answer</summary>
+  Data frame
+
+::: callout-question
 2.  What symbol starts a comment in R?
+:::
+<details>
+  <summary>Click to see answer</summary>
+  `#`
+
+::: callout-question
 3.  True or False: Loops are always better than vectorized code.
 :::
-
-::: callout-answer
-1.  Data frame\
-2.  `#`\
-3.  False
-:::
+<details>
+  <summary>Click to see answer</summary>
+  False
 
 ------------------------------------------------------------------------
 
 ## Summary
 
-You now understand: - Objects and naming - Vectors, matrices, and data frames - Conditions and loops - Writing and using functions - Writing readable R code
+You now understand: 
+  - Objects and naming 
+  - Conditions and loops
+  - Writing and using functions
+  - Vectors, matrices, and data frames
 
 These concepts form the foundation for all future R work.
