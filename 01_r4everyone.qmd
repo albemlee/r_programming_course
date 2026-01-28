@@ -276,6 +276,7 @@ Matrix indexing uses `matrix[row, column]`.
 ::: callout-question
 1.  What data structure stores values of different types in columns?
 :::
+
 <details>
   <summary>Click to see answer</summary>
   Data frame
@@ -283,6 +284,7 @@ Matrix indexing uses `matrix[row, column]`.
 ::: callout-question
 2.  What symbol starts a comment in R?
 :::
+
 <details>
   <summary>Click to see answer</summary>
   `#`
@@ -290,6 +292,7 @@ Matrix indexing uses `matrix[row, column]`.
 ::: callout-question
 3.  True or False: Loops are always better than vectorized code.
 :::
+
 <details>
   <summary>Click to see answer</summary>
   False
