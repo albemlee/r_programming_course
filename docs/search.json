@@ -50,36 +50,6 @@
     ]
   },
   {
-    "objectID": "01_r4everyone.html#vectors",
-    "href": "01_r4everyone.html#vectors",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Vectors",
-    "text": "Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\nVectorized Operations\ngrades + 5\nAll values in the vector are updated at once.\n\n\nIndexing\nIndexing is a fancy way of saying “selecting” values from a vector\nFor example to select the first value within the grades vector…\ngrades[1]\n… To select values 1 through 3 within the grades vector…\ngrades[1:3]\n… To select all values within grades that are greater than 92 …\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\nPractice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\n\nClick to see answer\n\n  basic_vec[c(2, 3, 4)]",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "01_r4everyone.html#matrices",
-    "href": "01_r4everyone.html#matrices",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Matrices",
-    "text": "Matrices\nMatrices are two-dimensional data structures.\nThe code below creates a 4 row x 2 column matrix.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\nIndexing Matrices\nJust as we can index (i.e., “select”) values from a vector, we can select values from a matrix.\nTo select the 3rd and 4rd row, 1st column of the grades matrix.\ngrades[3:4, 1]\n…To select all rows where the 1st column is greater than or equal to 85, and all columns…\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column].",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "01_r4everyone.html#data-frames",
-    "href": "01_r4everyone.html#data-frames",
-    "title": "R for Everyone: Core Programming Concepts",
-    "section": "Data Frames",
-    "text": "Data Frames\nMost real-world datasets are stored as data frames. They allow different data types across columns.\n\n\n\n\n\n\nTip\n\n\n\nIf you understand vectors and matrices, data frames will feel much more intuitive.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
-    ]
-  },
-  {
     "objectID": "01_r4everyone.html#conditions",
     "href": "01_r4everyone.html#conditions",
     "title": "R for Everyone: Core Programming Concepts",
@@ -105,6 +75,26 @@
     "title": "R for Everyone: Core Programming Concepts",
     "section": "Functions",
     "text": "Functions\nFunctions package reusable logic.\nconvert_in_cm &lt;- function(measurement, unit) {\n  if (unit == \"in\") {\n    conversion &lt;- measurement * 2.54\n  } else if (unit == \"cm\") {\n    conversion &lt;- measurement / 2.54\n  }\n  return(conversion)\n}\nconvert_in_cm(5, \"in\")\n\nPractice\n\nWhat are the arguments of convert_in_cm()?\n\n\n\nClick to see answer\n\n  `measurement` and `unit`",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
+  },
+  {
+    "objectID": "01_r4everyone.html#vectors",
+    "href": "01_r4everyone.html#vectors",
+    "title": "R for Everyone: Core Programming Concepts",
+    "section": "Vectors",
+    "text": "Vectors\nVectors store multiple values of the same type.\ngrades &lt;- c(80, 95, 90, 90)\n\nVectorized Operations\ngrades + 5\nAll values in the vector are updated at once.\n\n\nIndexing\nIndexing is a fancy way of saying “selecting” values from a vector\nFor example to select the first value within the grades vector…\ngrades[1]\n… To select values 1 through 3 within the grades vector…\ngrades[1:3]\n… To select all values within grades that are greater than 92 …\ngrades[1]\ngrades[1:3]\ngrades[grades &gt; 92]\n\n\nPractice\n\nGiven:\nbasic_vec &lt;- c(1, 4, 7, 3, 2)\nWhich indexing returns 4 7 3?\n\n\n\nClick to see answer\n\n  basic_vec[c(2, 3, 4)]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
+    ]
+  },
+  {
+    "objectID": "01_r4everyone.html#matrices",
+    "href": "01_r4everyone.html#matrices",
+    "title": "R for Everyone: Core Programming Concepts",
+    "section": "Matrices",
+    "text": "Matrices\nMatrices are two-dimensional data structures.\nThe code below creates a 4 row x 2 column matrix.\ngrades &lt;- matrix(\n  c(80, 90, 85, 85,\n    90, 90, 85, 100),\n  nrow = 4,\n  ncol = 2\n)\n\nIndexing Matrices\nJust as we can index (i.e., “select”) values from a vector, we can select values from a matrix.\nTo select the 3rd and 4rd row, 1st column of the grades matrix.\ngrades[3:4, 1]\n…To select all rows where the 1st column is greater than or equal to 85, and all columns…\ngrades[grades[,1] &gt;= 85, ]\n\n\n\n\n\n\nNote\n\n\n\nMatrix indexing uses matrix[row, column].",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R for Everyone: Core Programming Concepts</span>"
     ]
